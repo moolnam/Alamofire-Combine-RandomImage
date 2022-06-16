@@ -11,6 +11,7 @@
 		78F2C3EB285B3B17001E2DDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2C3EA285B3B17001E2DDA /* ContentView.swift */; };
 		78F2C3ED285B3B19001E2DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F2C3EC285B3B19001E2DDA /* Assets.xcassets */; };
 		78F2C3F0285B3B19001E2DDA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F2C3EF285B3B19001E2DDA /* Preview Assets.xcassets */; };
+		78F2C3F7285B46F0001E2DDA /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2C3F6285B46F0001E2DDA /* RandomUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		78F2C3EA285B3B17001E2DDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78F2C3EC285B3B19001E2DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F2C3EF285B3B19001E2DDA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		78F2C3F6285B46F0001E2DDA /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				78F2C3E8285B3B17001E2DDA /* Alamofire_Combine_RandomImageApp.swift */,
 				78F2C3EA285B3B17001E2DDA /* ContentView.swift */,
+				78F2C3F6285B46F0001E2DDA /* RandomUser.swift */,
 				78F2C3EC285B3B19001E2DDA /* Assets.xcassets */,
 				78F2C3EE285B3B19001E2DDA /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				78F2C3EB285B3B17001E2DDA /* ContentView.swift in Sources */,
 				78F2C3E9285B3B17001E2DDA /* Alamofire_Combine_RandomImageApp.swift in Sources */,
+				78F2C3F7285B46F0001E2DDA /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
