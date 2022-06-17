@@ -12,20 +12,21 @@ struct ProfileView: View {
     var randomUser: Result
     
     var body: some View {
-        HStack {
-            ProfileCircle(urlImage: randomUser.profileImageURL)
-            VStack {
-                ProfileName(name: randomUser.profileName, email: randomUser.email)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.5)
+        VStack {
+            HStack {
+                ProfileCircle(urlImage: randomUser.profileImageURL)
+                VStack {
+                    ProfileName(name: randomUser.profileName, email: randomUser.email, gender: randomUser.gender.rawValue)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.5)
+                }
             }
-        }
-        .font(.system(size: 30))
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
-        .padding()
-        .background(.green)
+            .font(.system(size: 30))
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80, alignment: .leading)
+            .padding()
+            .background(.green)
         .cornerRadius(20)
-        .padding()
+        }
     }
 }
 

@@ -16,7 +16,7 @@ class RandomUserViewModel: ObservableObject {
     
     @Published var randomUsers: [Result] = []
     
-    let baseURL = "https://randomuser.me/api/?results=20"t
+    let baseURL = "https://randomuser.me/api/?results=20"
     
     func fetchRandomUser() {
         AF.request(baseURL)
@@ -36,8 +36,6 @@ class RandomUserViewModel: ObservableObject {
                 print(receivedValue.count)
                 self.randomUsers = receivedValue
                 // @Published var randomUsers: [Result] = []
-
-                
             }).store(in: &subscription)
     }
     

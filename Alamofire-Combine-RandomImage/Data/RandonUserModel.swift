@@ -18,17 +18,19 @@ struct RandomUserModel: Codable, CustomStringConvertible {
 struct Result: Codable, Identifiable {
     var id = UUID()
     var name: Name
+    let gender: Gender
     var email: String
     var phote: Photo
     
     private enum CodingKeys: String, CodingKey {
         case name
+        case gender
         case email
         case phote = "picture"
     }
     
     static func getDummy() -> Self {
-        return Result(name: Name.getDummy(), email: "", phote: Photo.getDummy())
+        return Result(name: Name.getDummy(), gender: Gender(rawValue: "")!, email: "", phote: Photo.getDummy())
     }
     
     var profileImageURL: URL {
@@ -39,10 +41,16 @@ struct Result: Codable, Identifiable {
     
     var profileName: String {
         get {
-            "\(name.title) \(name.last) \(name.first)"
+            "[\(name.title)] \(name.last) \(name.first)"
         }
     }
     
+    
+}
+
+enum Gender: String, Codable {
+    case female = "female"
+    case male = "male"
 }
 
 struct Name: Codable {

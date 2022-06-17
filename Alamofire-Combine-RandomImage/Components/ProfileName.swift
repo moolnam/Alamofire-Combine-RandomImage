@@ -11,10 +11,12 @@ struct ProfileName: View {
     
     let name: String
     let email: String
+    let gender: String
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(name)")
+            Text("\(gender)")
             Text("\(email)")
         }
     }
@@ -22,7 +24,7 @@ struct ProfileName: View {
 
 struct ProfileName_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileName(name: "NAME", email: "EMAIL")
+        ProfileName(name: "NAME", email: "EMAIL", gender: "??")
             .previewLayout(.sizeThatFits)
     }
 }
