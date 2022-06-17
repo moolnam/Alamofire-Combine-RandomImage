@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ProfileName: View {
+    
+    let name: String
+    let email: String
+    
     var body: some View {
-        Text("Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!")
+        VStack(alignment: .leading) {
+            Text("\(name)")
+            Text("\(email)")
+        }
     }
 }
 
 struct ProfileName_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileName()
+        ProfileName(name: "NAME", email: "EMAIL")
             .previewLayout(.sizeThatFits)
     }
 }

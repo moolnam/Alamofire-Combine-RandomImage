@@ -10,46 +10,21 @@ import Combine
 import Alamofire
 
 
-class RandomUserModelManager: ObservableObject {
+class RandomUserViewModel: ObservableObject {
     
     var subscription = Set<AnyCancellable>()
     
-    @Published var tsxt: String = "HI"
     @Published var randomUsers: [Result] = []
     
-    let baseURL = "https://randomuser.me/api/?results=20"
-    
-    func fetchUser() {
-        let urlString = baseURL
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        print(url)
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            guard let safeData = data else {
-                return
-            }
-            
-            do {
-                let result = try JSONDecoder().decode(RandomUserModel.self, from: safeData)
-                DispatchQueue.main.async {
-                    print(result.results.count)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        task.resume()
-    }
+    let baseURL = "https://randomuser.me/api/?results=20"t
     
     func fetchRandomUser() {
         AF.request(baseURL)
             .publishDecodable(type: RandomUserModel.self)
+            .compactMap { $0.value}
+            // compactMap 은 옵셔널을 벗겨내는 방법중에 하나이다.
+            .map { $0.results}
+            // 한번더 map 을 해주면 results 안에 있는 값을 가져올 수 있다.
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let err):
@@ -57,9 +32,11 @@ class RandomUserModelManager: ObservableObject {
                 case .finished:
                     print("성공")
                 }
-                
-            }, receiveValue: { receivedValue in
-                print(receivedValue.description)
+            }, receiveValue: { (receivedValue: [Result]) in
+                print(receivedValue.count)
+                self.randomUsers = receivedValue
+                // @Published var randomUsers: [Result] = []
+
                 
             }).store(in: &subscription)
     }

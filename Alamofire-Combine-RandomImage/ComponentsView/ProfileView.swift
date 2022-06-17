@@ -9,13 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    var randomUser: Result
     
     var body: some View {
         HStack {
-            ProfileCircle(urlImage: URL(string: "https://randomuser.me/api/portraits/women/67.jpg")!)
-            ProfileName()
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
+            ProfileCircle(urlImage: randomUser.profileImageURL)
+            VStack {
+                ProfileName(name: randomUser.profileName, email: randomUser.email)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+            }
         }
         .font(.system(size: 30))
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
@@ -29,7 +32,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         
-        ProfileView()
+        ProfileView(randomUser: Result.getDummy())
             .previewLayout(.sizeThatFits)
     }
 }
