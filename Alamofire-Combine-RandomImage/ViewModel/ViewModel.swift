@@ -7,12 +7,15 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 
-class RandomUserModel: ObservableObject {
+class RandomUserModelManager: ObservableObject {
+    
+    var subscription = Set<AnyCancellable>()
     
     @Published var tsxt: String = "HI"
-    @Published var randomUser: [Result] = []
+    @Published var randomUsers: [Result] = []
     
     let baseURL = "https://randomuser.me/api/?results=20"
     
@@ -33,15 +36,32 @@ class RandomUserModel: ObservableObject {
             }
             
             do {
-                let result = try JSONDecoder().decode(RandomUser.self, from: safeData)
+                let result = try JSONDecoder().decode(RandomUserModel.self, from: safeData)
                 DispatchQueue.main.async {
-                    
+                    print(result.results.count)
                 }
             } catch {
                 print(error.localizedDescription)
             }
         }
         task.resume()
+    }
+    
+    func fetchRandomUser() {
+        AF.request(baseURL)
+            .publishDecodable(type: RandomUserModel.self)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let err):
+                    print("실패: \(err)")
+                case .finished:
+                    print("성공")
+                }
+                
+            }, receiveValue: { receivedValue in
+                print(receivedValue.description)
+                
+            }).store(in: &subscription)
     }
     
 }

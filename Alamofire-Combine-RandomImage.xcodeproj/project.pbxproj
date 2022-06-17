@@ -69,7 +69,7 @@
 				78F2C405285C7D5D001E2DDA /* ComponentsView */,
 				78F2C3FC285C78BC001E2DDA /* View */,
 				78F2C3FB285C78B6001E2DDA /* ViewModel */,
-				78F2C3FA285C78AE001E2DDA /* Model */,
+				78F2C3FA285C78AE001E2DDA /* Data */,
 				78F2C3EC285B3B19001E2DDA /* Assets.xcassets */,
 				78F2C3EE285B3B19001E2DDA /* Preview Content */,
 			);
@@ -84,12 +84,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		78F2C3FA285C78AE001E2DDA /* Model */ = {
+		78F2C3FA285C78AE001E2DDA /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				78F2C3F6285B46F0001E2DDA /* RandonUserModel.swift */,
 			);
-			path = Model;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		78F2C3FB285C78B6001E2DDA /* ViewModel */ = {

@@ -10,12 +10,17 @@ import URLImage
 
 struct ContentView: View {
     
-    
+    @StateObject var ran = RandomUserModelManager()
     
     var body: some View {
         List(0...100, id: \.self) { index in
             ProfileView()
         }
+        .onAppear() {
+            ran.fetchUser()
+            ran.fetchRandomUser()
+        }
+        
     }
 }
 
